@@ -28,12 +28,11 @@ export default function Skill() {
   return (
     <section className="mt-[100px] px-4 sm:px-6 lg:px-0">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
-        
         {/* Right side - Text & Button */}
         <div className="lg:w-1/2 flex flex-col">
-          <div className="w-[95px] h-[41px] border border-green-500 rounded-full flex justify-center items-center">
-            <p className="font-inter font-medium text-[20px] leading-[145%] text-green-400">
-              My Skills
+          <div className="w-[95px] h-[41px] border border-green-500 rounded-[75%] flex justify-center items-center">
+            <p className="font-inter font-medium text-[20px] leading-[145%] tracking-normal text-green-400">
+              My Skill
             </p>
           </div>
           <h1 className="font-inter font-semibold text-[32px] sm:text-[36px] md:text-[40px] leading-[40px] sm:leading-[48px] md:leading-[54px] mt-[10px]">

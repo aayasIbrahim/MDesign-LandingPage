@@ -25,9 +25,9 @@ export default function PortfolioSection() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
         {/* Left Column */}
         <div className="lg:w-[55%]">
-          <div className="w-[95px] h-[41px] border border-green-500 rounded-full flex justify-center items-center">
+          <div className="w-[95px] h-[41px] border border-green-500 rounded-[75%] flex justify-center items-center">
             <p className="font-inter font-medium text-[20px] leading-[145%] tracking-normal text-green-400">
-              My Skills
+              Protfolio
             </p>
           </div>
 
