@@ -10,7 +10,7 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white py-10 md:py-16 mt-[188px]">
+    <section className="bg-white py-10 md:py-16 mt-[100px]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row  justify-evenly divide-y-2 md:divide-y-0 md:divide-x-2 divide-green-400">
         {STATS_DATA.map((stat) => (
           <div key={stat.id} className="text-center px-8 lg:px-12 py-4">

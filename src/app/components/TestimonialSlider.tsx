@@ -65,7 +65,7 @@ export default function TestimonialSlider() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20 relative overflow-hidden">
+    <section className="max-w-7xl mx-auto px-4 py-20 relative overflow-hidden my-[188px]">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-16">
         <div className="mb-4 md:mb-0">
