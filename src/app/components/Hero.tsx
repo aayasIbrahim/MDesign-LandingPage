@@ -57,7 +57,7 @@ const ConfettiBackground = () => (
 export default function HeroSection() {
   return (
     // **KEY CHANGE 1**: Add 'relative' and 'overflow-hidden' to the main section
-    <section className="relative overflow-hidden bg-white py-20"> 
+    <section className="relative overflow-hidden  py-20 "> 
         
       {/* Insert the Background Dots Component */}
       <ConfettiBackground />
