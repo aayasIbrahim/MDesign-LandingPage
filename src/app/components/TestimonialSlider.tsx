@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
@@ -22,7 +22,7 @@ const reviews: Review[] = [
     name: "Amir Uddin",
     role: "UX Designer",
     text: "We will also facilitate the business marketing of these products with our SEO experts so that they become a ready to use website & help sell product from company",
-    avatar: "/images/amir-uddin.jpg",
+    avatar: "/images/amir-uddin.png",
     rating: 5,
   },
   {
@@ -30,7 +30,7 @@ const reviews: Review[] = [
     name: "Salim Ahmed",
     role: "UI Designer",
     text: "We will also facilitate the business marketing of these products with our SEO experts so that they become a ready to use website & help sell product from company",
-    avatar: "/images/salim-ahmed.jpg",
+    avatar: "/images/salim-ahmed.png",
     rating: 5,
   },
   {
@@ -38,13 +38,13 @@ const reviews: Review[] = [
     name: "Guy Hawkins",
     role: "UX Designer",
     text: "We will also facilitate the business marketing of these products with our SEO experts so that they become a ready to use website & help sell product from company",
-    avatar: "/images/guy-hawkins.jpg",
+    avatar: "/images/guy-hawkins.png",
     rating: 5,
   },
 ];
 
 const StarRating = ({ count }: { count: number }) => (
-  <div className="flex text-red-500 mb-4">
+  <div className="flex text-[#FE8B75] mb-4">
     {[...Array(count)].map((_, i) => (
       <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -56,6 +56,13 @@ const StarRating = ({ count }: { count: number }) => (
 export default function TestimonialSlider() {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+
+  // state to ensure refs are set after mount
+  const [navigationReady, setNavigationReady] = useState(false);
+
+  useEffect(() => {
+    setNavigationReady(true);
+  }, []);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-20 relative overflow-hidden">
@@ -88,51 +95,45 @@ export default function TestimonialSlider() {
       </div>
 
       {/* Swiper Slider */}
-      <Swiper
-        modules={[Navigation]}
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        onBeforeInit={(swiper) => {
-          if (swiper.params.navigation) {
-            // @ts-ignore
-            swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-ignore
-            swiper.params.navigation.nextEl = nextRef.current;
-          }
-        }}
-        breakpoints={{
-          768: { slidesPerView: 2, spaceBetween: 30 },
-          1024: { slidesPerView: 3, spaceBetween: 40 },
-        }}
-        className="w-full pb-10"
-      >
-        {reviews.map((review) => (
-          <SwiperSlide key={review.id}>
-            <div className="bg-white p-6 rounded-xl shadow-xl border-t-4 border-transparent hover:border-green-500 transition duration-300 h-full flex flex-col justify-between">
-              <StarRating count={review.rating} />
-              <p className="text-gray-600 text-base mb-6">{review.text}</p>
-              <div className="flex items-center mt-auto">
-                <Image
-                  src={review.avatar}
-                  alt={review.name}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">{review.name}</p>
-                  <p className="text-sm text-gray-500">{review.role}</p>
+      {navigationReady && (
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={1}
+          spaceBetween={30}
+          loop={true}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          breakpoints={{
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 40 },
+          }}
+          className="w-full pb-10"
+        >
+          {reviews.map((review) => (
+            <SwiperSlide key={review.id}>
+              <div className="bg-white p-6 rounded-xl shadow-xl border-t-4 border-transparent hover:border-green-500 transition duration-300 h-full flex flex-col justify-between">
+                <StarRating count={review.rating} />
+                <p className="text-gray-600 text-base mb-6">{review.text}</p>
+                <div className="flex items-center mt-auto">
+                  <Image
+                    src={review.avatar}
+                    alt={review.name}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900">{review.name}</p>
+                    <p className="text-sm text-gray-500">{review.role}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </section>
   );
 }
