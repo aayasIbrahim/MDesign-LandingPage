@@ -1,6 +1,7 @@
 // src/components/Skill.tsx
 import React from "react";
 import Image from "next/image";
+import ConfettiBackground from "./ConfettiBackground";
 
 // Skill data
 const SKILLS = [
@@ -26,7 +27,8 @@ const SKILLS = [
 
 export default function Skill() {
   return (
-    <section className="mt-[100px] px-4 sm:px-6 lg:px-0">
+    <section className="relative overflow-hidden  py-20">
+      <ConfettiBackground/>
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
         {/* Right side - Text & Button */}
         <div className="lg:w-1/2 flex flex-col">

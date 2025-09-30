@@ -174,6 +174,7 @@ import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
+import ConfettiBackground from "./ConfettiBackground";
 
 type Review = {
   id: number;
@@ -252,6 +253,7 @@ export default function TestimonialSlider() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-20 relative overflow-hidden my-[188px]">
+      <ConfettiBackground/>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-16">
         <div className="mb-4 md:mb-0">
