@@ -233,6 +233,7 @@ export default function TestimonialSlider() {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const [navigationReady, setNavigationReady] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   useEffect(() => {
